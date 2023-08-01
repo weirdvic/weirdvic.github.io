@@ -61,10 +61,10 @@
       </div>
     </main>
     <script type="module">
-      import { search, default as init } from '/wasm_output/tinysearch_engine.js';
+      import { search, default as init } from '/js/tinysearch_engine.js';
       window.search = search;
       async function run() {
-          await init('/wasm_output/tinysearch_engine_bg.wasm');
+          await init('/js/tinysearch_engine_bg.wasm');
       }
       run();
     </script>
