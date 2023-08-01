@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Цифровой мицелий</title>
+    <link>https://weirdvic.github.io/</link>
+    <description>Recent content on Цифровой мицелий</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 31 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://weirdvic.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10 самых больших таблиц в базе</title>
+      <link>https://weirdvic.github.io/mycelium/10-%D1%81%D0%B0%D0%BC%D1%8B%D1%85-%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D1%85-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5/</link>
+      <pubDate>Mon, 31 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/10-%D1%81%D0%B0%D0%BC%D1%8B%D1%85-%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D1%85-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5/</guid>
+      <description>Запрос позволяет найти 10(или больше) самых больших таблиц PostgreSQL по занимаемому месту на диске:
+SELECT schemaname AS &amp;#34;table_schema&amp;#34;, relname AS &amp;#34;table_name&amp;#34;, pg_size_pretty(pg_total_relation_size(relid)) AS total_size, pg_size_pretty(pg_relation_size(relid)) AS data_size, pg_size_pretty(pg_total_relation_size(relid) - pg_relation_size(relid)) AS external_size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC, pg_relation_size(relid) DESC LIMIT 10; </description>
+    </item>
+    
+    <item>
+      <title>Infrastructure as Code</title>
+      <link>https://weirdvic.github.io/mycelium/infrastructure-as-code/</link>
+      <pubDate>Sat, 29 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/infrastructure-as-code/</guid>
+      <description>Infrastructure-as-Code или IaC это автоматизированный подход к описанию и управлению IT инфраструктурой не через ручное редактирование файлов конфигураций на серверах, а с применением специальных инструментов. Инструменты IaC являются важной частью практик DevOps и концепций CI/CD.
+Под инфраструктурой в данном случае понимается совокупность аппаратных и программных компонентов, составляющих IT среду, таких как серверы, устройства хранения данных, сетевые устройства и т.д.
+Основная идея IaC в том чтобы перенести практики, применяющиеся в разработке ПО на управление инфраструктурой.</description>
+    </item>
+    
+    <item>
+      <title>Поиск медианы в MySQL</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D0%BD%D1%8B-%D0%B2-mysql/</link>
+      <pubDate>Sat, 29 Jul 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D0%BD%D1%8B-%D0%B2-mysql/</guid>
+      <description>Иногда требуется найти медианное значение в таблице. В отличие от среднего, медиана это значение, разделяющее диапазон на две равные части. В случае равномерного распределения, медиана совпадает со средним арифметическим, но в других случаях может и отличаться. Если диапазон содержит чётное количество значений, медианное приходится на среднее между двумя центральными значениями.
+Рассмотрим пример поиска медианного значения северной широты (LAT_N) из таблицы метеостанций.
+SET @row_index := -1; SELECT ROUND(AVG(subq.LAT_N),4) FROM ( SELECT @row_index:=@row_index + 1 AS row_index, LAT_N FROM STATION ORDER BY LAT_N ) AS subq WHERE subq.</description>
+    </item>
+    
+    <item>
+      <title>DevOps</title>
+      <link>https://weirdvic.github.io/mycelium/devops/</link>
+      <pubDate>Fri, 28 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/devops/</guid>
+      <description>Что такое DevOps? По этому поводу есть много споров и существует много различных определений DevOps, приведу примеры от разных компаний
+Amazon DevOps это сочетание культурной философии, практик и инструментов, увеличивающее способность организации доставлять приложения и сервисы быстрее: изменять и улучшать продукты быстрее чем организации, использующие традиционный подход к разработке ПО и управлению инфраструктурой. Эта скорость позволяет организациям лучше удовлетворять потребности клиентов и быть более эффективными.
+Microsoft DevOps это союз людей, процессов и продуктов ради обеспечения непрерывной доставки конечным пользователям.</description>
+    </item>
+    
+    <item>
+      <title>Идемпотентность</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%B8%D0%B4%D0%B5%D0%BC%D0%BF%D0%BE%D1%82%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</link>
+      <pubDate>Fri, 28 Jul 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%B8%D0%B4%D0%B5%D0%BC%D0%BF%D0%BE%D1%82%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C/</guid>
+      <description>Идемпотентность(idempotency) — свойство объекта или операции при повторном применении операции к объекту давать тот же результат, что и при первом.
+В контексте IT это характеристика инструментов, которые не вносят дополнительные изменения в систему при перезапусках. Например плейбук Ansible, который создал файлы в системе при первом запуске, при повторном и следующих запусках не должен пытаться снова создать эти файлы если они уже существуют в системе.</description>
+    </item>
+    
+    <item>
+      <title>Ошибка suspiciously many broken parts to remove</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0-suspiciously-many-broken-parts-to-remove/</link>
+      <pubDate>Wed, 26 Jul 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0-suspiciously-many-broken-parts-to-remove/</guid>
+      <description>При запуске сервера Clickhouse после аварийной перезагрузки или проблем с файловой системой может появиться большое число ошибок и сервер просто не запустится. В логах Clickhouse ошибки будут примерно такие:
+2023.07.26 19:26:36.621640 [ 2366 ] {} &amp;lt;Error&amp;gt; Application: DB::Exception: Suspiciously many (29) broken parts to remove.: Cannot attach table anyclass.event from metadata file /var/lib/clickhouse/store/430/430da485-c4de-4665-830d-a485c4de4665/event.sql from query ATTACH TABLE … clickhouse from path /var/lib/clickhouse/metadata/clickhouse В таком случае может помочь создание файла /var/lib/clickhouse/flags/force_restore_data и перезапуск сервера:</description>
+    </item>
+    
+    <item>
+      <title>Модули Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B8-terraform/</link>
+      <pubDate>Sun, 23 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B8-terraform/</guid>
+      <description>Определение модулей Terraform Модуль представляет собой контейнер для нескольких ресурсов, используемых совместно. Модули могут быть использованы для построения абстракций над базовыми &amp;ldquo;строительными блоками&amp;rdquo; для описания архитектуры на более высоком уровне.
+Как определить модуль Terraform? Фактически любые файлы Terraform в одной директории составляют модуль. Нет специального синтаксиса для определения модулей.
+Как тестировать модули Terraform? Есть несколько различных способов, один из них — использование инструмента terratest для проверки инициализации модуля, создания и удаления ресурсов.</description>
+    </item>
+    
+    <item>
+      <title>Типичный рабочий процесс с Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/%D1%82%D0%B8%D0%BF%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%81-terraform/</link>
+      <pubDate>Sun, 23 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D1%82%D0%B8%D0%BF%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%81-terraform/</guid>
+      <description>Terraform
+Написание определений в файлах .tf на языке HCL и запуск команды terraform init (только в первый раз для установки необходимых провайдеров). Проверка планируемых изменений с помощью команды terraform plan. Применение изменений командой terraform apply. </description>
+    </item>
+    
+    <item>
+      <title>Data sources в Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/data-sources-%D0%B2-terraform/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/data-sources-%D0%B2-terraform/</guid>
+      <description>Источники данных используются для получения данных от провайдеров или, в общем смысле, от любых внешних ресурсов (например публичных облаков AWS, GCP и др.) Источники данных только предоставляют данные, ничего не создают и не изменяют.
+Пример использования источников данных в Terraform data &amp;#34;aws_vpc&amp;#34; &amp;#34;default { default = true } Обращение к данным внутри источника Допустим источник данных определён таким способом:
+data &amp;#34;aws_vpc&amp;#34; &amp;#34;default { default = true } Тогда для обращения к его аттрибуту ID можно использовать такой способ: data.</description>
+    </item>
+    
+    <item>
+      <title>Workspaces в Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/workspaces-%D0%B2-terraform/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/workspaces-%D0%B2-terraform/</guid>
+      <description>Определение рабочего пространства из официальной документации довольно расплывчатое. Условно рабочим пространством можно назвать постоянные данные и cостояние(state) для определённого бэкенда. Каждое рабочее пространство обладает собственным файлом состояния. Использовать рабочие пространства для разделения между разными окружениями(например development и production) плохая идея потому что рабочие пространства хранятся в одном месте и к ним применяются одинаковые ограничения доступа. Плюс легко ошибиться и выполнить команду в неправильном пространстве.
+Как создать новое рабочее пространство? terraform workspace new &amp;lt;WORKSPACE_NAME&amp;gt;</description>
+    </item>
+    
+  </channel>
+</rss>

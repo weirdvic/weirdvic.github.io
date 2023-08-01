@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Terraform on Цифровой мицелий</title>
+    <link>https://weirdvic.github.io/tags/terraform/</link>
+    <description>Recent content in Terraform on Цифровой мицелий</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 23 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://weirdvic.github.io/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Модули Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B8-terraform/</link>
+      <pubDate>Sun, 23 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B8-terraform/</guid>
+      <description>Определение модулей Terraform Модуль представляет собой контейнер для нескольких ресурсов, используемых совместно. Модули могут быть использованы для построения абстракций над базовыми &amp;ldquo;строительными блоками&amp;rdquo; для описания архитектуры на более высоком уровне.
+Как определить модуль Terraform? Фактически любые файлы Terraform в одной директории составляют модуль. Нет специального синтаксиса для определения модулей.
+Как тестировать модули Terraform? Есть несколько различных способов, один из них — использование инструмента terratest для проверки инициализации модуля, создания и удаления ресурсов.</description>
+    </item>
+    
+    <item>
+      <title>Типичный рабочий процесс с Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/%D1%82%D0%B8%D0%BF%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%81-terraform/</link>
+      <pubDate>Sun, 23 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D1%82%D0%B8%D0%BF%D0%B8%D1%87%D0%BD%D1%8B%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81-%D1%81-terraform/</guid>
+      <description>Terraform
+Написание определений в файлах .tf на языке HCL и запуск команды terraform init (только в первый раз для установки необходимых провайдеров). Проверка планируемых изменений с помощью команды terraform plan. Применение изменений командой terraform apply. </description>
+    </item>
+    
+    <item>
+      <title>Data sources в Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/data-sources-%D0%B2-terraform/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/data-sources-%D0%B2-terraform/</guid>
+      <description>Источники данных используются для получения данных от провайдеров или, в общем смысле, от любых внешних ресурсов (например публичных облаков AWS, GCP и др.) Источники данных только предоставляют данные, ничего не создают и не изменяют.
+Пример использования источников данных в Terraform data &amp;#34;aws_vpc&amp;#34; &amp;#34;default { default = true } Обращение к данным внутри источника Допустим источник данных определён таким способом:
+data &amp;#34;aws_vpc&amp;#34; &amp;#34;default { default = true } Тогда для обращения к его аттрибуту ID можно использовать такой способ: data.</description>
+    </item>
+    
+    <item>
+      <title>Workspaces в Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/workspaces-%D0%B2-terraform/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/workspaces-%D0%B2-terraform/</guid>
+      <description>Определение рабочего пространства из официальной документации довольно расплывчатое. Условно рабочим пространством можно назвать постоянные данные и cостояние(state) для определённого бэкенда. Каждое рабочее пространство обладает собственным файлом состояния. Использовать рабочие пространства для разделения между разными окружениями(например development и production) плохая идея потому что рабочие пространства хранятся в одном месте и к ним применяются одинаковые ограничения доступа. Плюс легко ошибиться и выполнить команду в неправильном пространстве.
+Как создать новое рабочее пространство? terraform workspace new &amp;lt;WORKSPACE_NAME&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>Жизненный цикл ресурсов в Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%B6%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D1%86%D0%B8%D0%BA%D0%BB-%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D0%BE%D0%B2-%D0%B2-terraform/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%B6%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9-%D1%86%D0%B8%D0%BA%D0%BB-%D1%80%D0%B5%D1%81%D1%83%D1%80%D1%81%D0%BE%D0%B2-%D0%B2-terraform/</guid>
+      <description>Как работает обновление ресурсов? По-умолчанию существующий ресурс удаляется, создаётся новый и все ссылки на старый ресурс заменяются ссылками на новый.
+Возможно ли изменить стандартный жизненный цикл? Да, существует несколько вариантов, например create_before_destroy, при котором порядок обновления изменяется: сначала создаётся новый ресурс, обновляются ссылки, а затем старый ресурс удаляется.
+lifecycle { create_before_destroy = true } Причина для использования такого порядка обновления: в определённых случаях ресурс может иметь иммутабельные зависимости, которые нельзя обновить без пересоздания.</description>
+    </item>
+    
+    <item>
+      <title>Использование provisioners в Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-provisioners-%D0%B2-terraform/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-provisioners-%D0%B2-terraform/</guid>
+      <description>Что такое поставщики (provisioners) Допустим мы создали виртуальную машину и нам необходимо передать ей какие-либо данные или запустить какую-либо команду, как это можно сделать средствами Terraform? Ответ: с использованием provisioners. Поставщики можно описать как плагин для Terraform, позволяющий выполнять некоторые задачи по конфигурации сервисов. Типичные задачи, для которых используются поставщики:
+Запустить софт для управления конфигурациями, такой как Ansible. Скопировать файлы Выполнить скрипт на удалённой машине Почему к provisioners рекомендуется прибегать только в самом крайнем случае?</description>
+    </item>
+    
+    <item>
+      <title>Особенности Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BE%D1%81%D0%BE%D0%B1%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8-terraform/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BE%D1%81%D0%BE%D0%B1%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8-terraform/</guid>
+      <description> Декларативность. Terraform использует декларативный подход для описания конечного состояния ресурсов. Отсутствие агентов. В отличие от других технологий Terraform не использует клиент-серверную модель, а полагается на различные API для выполнения манипуляций с ресурсами. Сильная поддержка сообщества для модулей и провайдеров и наличие большого количества готовых инструментов. </description>
+    </item>
+    
+    <item>
+      <title>Переменные в Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B2-terraform/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B2-terraform/</guid>
+      <description>Для чего используются переменные (input variables) в Terraform? Для того же, для чего и в программировании — для обращения по имени к какому-либо значению.
+Типы переменных, поддерживаемые в Terraform? string number bool list(&amp;lt;TYPE&amp;gt;) set(&amp;lt;TYPE&amp;gt;) map(&amp;lt;TYPE&amp;gt;) object({&amp;lt;ATTR_NAME&amp;gt; = &amp;lt;TYPE&amp;gt;, &amp;hellip; }) tuple([&amp;lt;TYPE&amp;gt;, &amp;hellip;]) Какой тип переменной используется по-умолчанию? any
+Способы передать значения для переменных? С использованием опции -var в командной строке. С использованием файла переменных и опции -var-file. Через переменные окружения, которые начинаются с TF_VAR_&amp;lt;VAR_NAME&amp;gt; Если не значение не было передано, оно будет запрошено в процессе выполнения команды.</description>
+    </item>
+    
+    <item>
+      <title>Провайдеры Terraform</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BF%D1%80%D0%BE%D0%B2%D0%B0%D0%B9%D0%B4%D0%B5%D1%80%D1%8B-terraform/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BF%D1%80%D0%BE%D0%B2%D0%B0%D0%B9%D0%B4%D0%B5%D1%80%D1%8B-terraform/</guid>
+      <description>Terraform использует систему плагинов, называемых провайдерами (providers) для взаимодействия с облачными платформами или другими сервисами посредством API.
+Уже существует более 1000 провайдеров для управления ресурсами на:
+Amazon Web Services (AWS) Google Cloud Platform (GCP) Oracle Cloud Azure Kubernetes GitHub Splunk DataDog и огромным количеством других.
+Репозиторий провайдеров находится в Terraform Registry</description>
+    </item>
+    
+    <item>
+      <title>Состояние в Terrafrom</title>
+      <link>https://weirdvic.github.io/mycelium/%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5-%D0%B2-terrafrom/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5-%D0%B2-terrafrom/</guid>
+      <description>Под состоянием или state в Terraform понимается состояние инфраструктуры и конфигурации, о котором &amp;ldquo;знает&amp;rdquo; Terraform. При этом оно вполне может отличаться от фактического состояния ресурсов. В самом простом варианте состояние хранится в файле terraform.tfstate и представляет собой JSON файл. Лучшие практики в работе с tfstate:
+Не редактировать файл состояния вручную. Файл не предназначен для ручного редактирования. Хранить файл в защищённом месте, поскольку в нём содержаться секретные данные в виде простого текста.</description>
+    </item>
+    
+  </channel>
+</rss>

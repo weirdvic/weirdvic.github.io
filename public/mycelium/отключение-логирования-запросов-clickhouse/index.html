@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="wvc ">
+<meta name="description" content="В файле /etc/clickhouse-server/users.d/disable-query-logging.xml:
+&amp;lt;yandex&amp;gt; &amp;lt;profiles&amp;gt; &amp;lt;default&amp;gt; &amp;lt;log_queries&amp;gt;0&amp;lt;/log_queries&amp;gt; &amp;lt;log_query_threads&amp;gt;0&amp;lt;/log_query_threads&amp;gt; &amp;lt;/default&amp;gt; &amp;lt;/profiles&amp;gt; &amp;lt;/yandex&amp;gt; В новых версиях Clickhouse вместо &amp;lt;yandex&amp;gt; использовать &amp;lt;clickhouse&amp;gt;." />
+<meta name="keywords" content="blog, emacs, personal, cv, SQL, snippets, Clickhouse" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://weirdvic.github.io/mycelium/%D0%BE%D1%82%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BB%D0%BE%D0%B3%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-clickhouse/" />
+
+
+    <title>
+        
+            Отключение логирования запросов Clickhouse :: Цифровой мицелий  — Блог и база знаний
+        
+    </title>
+
+
+
+
+
+<link rel="stylesheet" href="https://weirdvic.github.io/main.2bd9a6555f27f85f2c3f8b914da99c2ce833ea77c71769709c9b76d30169fd74.css" integrity="sha256-K9mmVV8n&#43;F8sP4uRTamcLOgz6nfHF2lwnJt20wFp/XQ=">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://weirdvic.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://weirdvic.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://weirdvic.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://weirdvic.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://weirdvic.github.io/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://weirdvic.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Отключение логирования запросов Clickhouse">
+<meta itemprop="description" content="В файле /etc/clickhouse-server/users.d/disable-query-logging.xml:
+&lt;yandex&gt; &lt;profiles&gt; &lt;default&gt; &lt;log_queries&gt;0&lt;/log_queries&gt; &lt;log_query_threads&gt;0&lt;/log_query_threads&gt; &lt;/default&gt; &lt;/profiles&gt; &lt;/yandex&gt; В новых версиях Clickhouse вместо &lt;yandex&gt; использовать &lt;clickhouse&gt;.">
+<meta itemprop="dateModified" content="2023-07-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="19"><meta itemprop="image" content="https://weirdvic.github.io"/>
+<meta itemprop="keywords" content="SQL,snippets,Clickhouse," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://weirdvic.github.io"/>
+
+<meta name="twitter:title" content="Отключение логирования запросов Clickhouse"/>
+<meta name="twitter:description" content="В файле /etc/clickhouse-server/users.d/disable-query-logging.xml:
+&lt;yandex&gt; &lt;profiles&gt; &lt;default&gt; &lt;log_queries&gt;0&lt;/log_queries&gt; &lt;log_query_threads&gt;0&lt;/log_query_threads&gt; &lt;/default&gt; &lt;/profiles&gt; &lt;/yandex&gt; В новых версиях Clickhouse вместо &lt;yandex&gt; использовать &lt;clickhouse&gt;."/>
+
+
+
+    <meta property="og:title" content="Отключение логирования запросов Clickhouse" />
+<meta property="og:description" content="В файле /etc/clickhouse-server/users.d/disable-query-logging.xml:
+&lt;yandex&gt; &lt;profiles&gt; &lt;default&gt; &lt;log_queries&gt;0&lt;/log_queries&gt; &lt;log_query_threads&gt;0&lt;/log_query_threads&gt; &lt;/default&gt; &lt;/profiles&gt; &lt;/yandex&gt; В новых версиях Clickhouse вместо &lt;yandex&gt; использовать &lt;clickhouse&gt;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://weirdvic.github.io/mycelium/%D0%BE%D1%82%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BB%D0%BE%D0%B3%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-clickhouse/" /><meta property="og:image" content="https://weirdvic.github.io"/><meta property="article:section" content="mycelium" />
+
+<meta property="article:modified_time" content="2023-07-21T00:00:00+00:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2023-07-21 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://weirdvic.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text ">
+                $ cd /home/wvc</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://weirdvic.github.io/posts/">Блог</a></li><li><a href="https://weirdvic.github.io/mycelium/">Мицелий</a></li><li><a href="https://weirdvic.github.io/tags/">Теги</a></li><li><a href="https://weirdvic.github.io/about/">Обо мне</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        1 минута
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://weirdvic.github.io/mycelium/%D0%BE%D1%82%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BB%D0%BE%D0%B3%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-clickhouse/">Отключение логирования запросов Clickhouse</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>В файле <code>/etc/clickhouse-server/users.d/disable-query-logging.xml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;profiles&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;default&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;log_queries&gt;</span>0<span style="color:#f92672">&lt;/log_queries&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;log_query_threads&gt;</span>0<span style="color:#f92672">&lt;/log_query_threads&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;/default&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;/profiles&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><p>В новых версиях Clickhouse вместо <code>&lt;yandex&gt;</code> использовать <code>&lt;clickhouse&gt;</code>.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+
+
+      
+   
+
+
+<h4 id="backlinks">Страницы, ссылающиеся на эту:</h2>
+<ul>
+  
+  <li><a href="https://weirdvic.github.io/mycelium/clickhouse/">Clickhouse</a></li>
+  
+</ul>
+
+
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://weirdvic.github.io/tags/sql/">SQL</a></span>
+        <span class="tag"><a href="https://weirdvic.github.io/tags/snippets/">snippets</a></span>
+        <span class="tag"><a href="https://weirdvic.github.io/tags/clickhouse/">Clickhouse</a></span>
+        
+    </p>
+
+      
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        19 слов
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2023-07-21
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://weirdvic.github.io/mycelium/%D0%BE%D1%81%D0%BE%D0%B1%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8-terraform/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Особенности Terraform</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://weirdvic.github.io/mycelium/%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%B5-%D0%B2-terraform/">
+                    <span class="button__text">Переменные в Terraform</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            
+            
+            
+            <span>Made with <a href="https://emacs.sexy">&#8496;macs</a> и <a href="http://gohugo.io">Hugo</a></span>
+            <span><a href="https://weirdvic.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://weirdvic.github.io/bundle.min.205d491810c28f95aa953fae884e1c27abe13fdf93ec63b882d0036b248d4a6282eb2d134e4e7225c6ad6e86db87b08488a361ca4a7383d01fcff43f3d57b9c3.js" integrity="sha512-IF1JGBDCj5WqlT&#43;uiE4cJ6vhP9&#43;T7GO4gtADaySNSmKC6y0TTk5yJcatbobbh7CEiKNhykpzg9Afz/Q/PVe5ww=="></script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Цифровой мицелий</title>
+    <link>https://weirdvic.github.io/tags/docker/</link>
+    <description>Recent content in Docker on Цифровой мицелий</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 15 May 2023 00:00:00 +0300</lastBuildDate><atom:link href="https://weirdvic.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker</title>
+      <link>https://weirdvic.github.io/mycelium/docker/</link>
+      <pubDate>Mon, 15 May 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/docker/</guid>
+      <description>Docker — платформа для управления контейнеризованными приложениями.</description>
+    </item>
+    
+    <item>
+      <title>Podman</title>
+      <link>https://weirdvic.github.io/mycelium/podman/</link>
+      <pubDate>Mon, 15 May 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/podman/</guid>
+      <description>Podman — утилита для управления контейнерами, альтернатива Docker.
+После установки на Oracle Linux для скачивания контейнеров с DockerHub необходимо залогиниться:
+podman login docker.io По-умолчанию в rootless режиме Podman не умеет цепляться к портам ниже 1024, документация по этому поводу предлагает несколько вариантов решения этой проблемы кроме запуска Podman от рута:
+В sysctl установить значение net.ipv4.ip_unprivileged_port_start равное минимальному порту, который требуется открывать от непривиллегированного пользователя. То есть если нужно прослушивать 80 порт, это значение должно быть не больше 80.</description>
+    </item>
+    
+  </channel>
+</rss>

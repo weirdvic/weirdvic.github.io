@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTTP on Цифровой мицелий</title>
+    <link>https://weirdvic.github.io/tags/http/</link>
+    <description>Recent content in HTTP on Цифровой мицелий</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 16 May 2023 00:00:00 +0300</lastBuildDate><atom:link href="https://weirdvic.github.io/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Реверс-прокси</title>
+      <link>https://weirdvic.github.io/mycelium/%D1%80%D0%B5%D0%B2%D0%B5%D1%80%D1%81-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8/</link>
+      <pubDate>Tue, 16 May 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D1%80%D0%B5%D0%B2%D0%B5%D1%80%D1%81-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8/</guid>
+      <description>Тип прокси сервера, который транслирует запросы клиентов из внешней сети на серверы, расположенные во внутренней сети.
+Реверс-прокси используется во многих случаях:
+Обратный прокси-сервер может скрывать существование опрашиваемых им серверов и их характеристики. Применение программного файрвола в обратном прокси-сервере может защитить от наиболее распространенных веб-атак, таких как DoS или DDoS. Без обратного прокси-сервера удаление вредоносного ПО может оказаться непростой задачей. Основной веб-сайт может не поддерживать подключение по SSL, однако это можно реализовать с помощью обратного прокси-сервера, который может быть оборудован аппаратным SSL-ускорителем.</description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://weirdvic.github.io/mycelium/nginx/</link>
+      <pubDate>Mon, 15 May 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/nginx/</guid>
+      <description>Nginx — популярный HTTP-сервер, реверс-прокси, почтовый прокси, а также TCP/UDP прокси общего назначения.
+Полезные советы по настройке:
+Удаление www из URL Запрет доступа по IP адресу </description>
+    </item>
+    
+  </channel>
+</rss>

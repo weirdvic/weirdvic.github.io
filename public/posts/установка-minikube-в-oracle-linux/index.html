@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="wvc ">
+<meta name="description" content="Введение В этой статье я бы хотел зафиксировать процесс запуска учебного кластера Kubernetes в виде Minikube на сервере под управлением Oracle Linux.
+Подразумевается что сам сервер с доступом по ssh у нас уже есть. Я использую бесплатный инстанс в Oracle Cloud, но в принципе можно использовать любое другое облако или даже любой другой хостинг, вплоть до подкроватного. Для запуска Minikube необходимо минимум 2 ядра процессора и 2 Гб оперативной памяти. Если мы используем free-tier облака от Oracle, то следует использовать машины на Ampere A1." />
+<meta name="keywords" content="blog, emacs, personal, cv, kubernetes, podman, nginx, minikube" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://weirdvic.github.io/posts/%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-minikube-%D0%B2-oracle-linux/" />
+
+
+    <title>
+        
+            Установка Minikube в Oracle Linux :: Цифровой мицелий  — Блог и база знаний
+        
+    </title>
+
+
+
+
+
+<link rel="stylesheet" href="https://weirdvic.github.io/main.2bd9a6555f27f85f2c3f8b914da99c2ce833ea77c71769709c9b76d30169fd74.css" integrity="sha256-K9mmVV8n&#43;F8sP4uRTamcLOgz6nfHF2lwnJt20wFp/XQ=">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://weirdvic.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://weirdvic.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://weirdvic.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://weirdvic.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://weirdvic.github.io/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://weirdvic.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Установка Minikube в Oracle Linux">
+<meta itemprop="description" content="Введение В этой статье я бы хотел зафиксировать процесс запуска учебного кластера Kubernetes в виде Minikube на сервере под управлением Oracle Linux.
+Подразумевается что сам сервер с доступом по ssh у нас уже есть. Я использую бесплатный инстанс в Oracle Cloud, но в принципе можно использовать любое другое облако или даже любой другой хостинг, вплоть до подкроватного. Для запуска Minikube необходимо минимум 2 ядра процессора и 2 Гб оперативной памяти. Если мы используем free-tier облака от Oracle, то следует использовать машины на Ampere A1."><meta itemprop="datePublished" content="2023-05-30T00:00:00+03:00" />
+<meta itemprop="dateModified" content="2023-07-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="957"><meta itemprop="image" content="https://weirdvic.github.io"/>
+<meta itemprop="keywords" content="kubernetes,podman,nginx,minikube," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://weirdvic.github.io"/>
+
+<meta name="twitter:title" content="Установка Minikube в Oracle Linux"/>
+<meta name="twitter:description" content="Введение В этой статье я бы хотел зафиксировать процесс запуска учебного кластера Kubernetes в виде Minikube на сервере под управлением Oracle Linux.
+Подразумевается что сам сервер с доступом по ssh у нас уже есть. Я использую бесплатный инстанс в Oracle Cloud, но в принципе можно использовать любое другое облако или даже любой другой хостинг, вплоть до подкроватного. Для запуска Minikube необходимо минимум 2 ядра процессора и 2 Гб оперативной памяти. Если мы используем free-tier облака от Oracle, то следует использовать машины на Ampere A1."/>
+
+
+
+    <meta property="og:title" content="Установка Minikube в Oracle Linux" />
+<meta property="og:description" content="Введение В этой статье я бы хотел зафиксировать процесс запуска учебного кластера Kubernetes в виде Minikube на сервере под управлением Oracle Linux.
+Подразумевается что сам сервер с доступом по ssh у нас уже есть. Я использую бесплатный инстанс в Oracle Cloud, но в принципе можно использовать любое другое облако или даже любой другой хостинг, вплоть до подкроватного. Для запуска Minikube необходимо минимум 2 ядра процессора и 2 Гб оперативной памяти. Если мы используем free-tier облака от Oracle, то следует использовать машины на Ampere A1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://weirdvic.github.io/posts/%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-minikube-%D0%B2-oracle-linux/" /><meta property="og:image" content="https://weirdvic.github.io"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-30T00:00:00+03:00" />
+<meta property="article:modified_time" content="2023-07-21T00:00:00+00:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2023-05-30 00:00:00 &#43;0300 MSK" />
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://weirdvic.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text ">
+                $ cd /home/wvc</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://weirdvic.github.io/posts/">Блог</a></li><li><a href="https://weirdvic.github.io/mycelium/">Мицелий</a></li><li><a href="https://weirdvic.github.io/tags/">Теги</a></li><li><a href="https://weirdvic.github.io/about/">Обо мне</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        5 минут
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://weirdvic.github.io/posts/%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-minikube-%D0%B2-oracle-linux/">Установка Minikube в Oracle Linux</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <h2 id="введение">Введение</h2>
+<p>В этой статье я бы хотел зафиксировать процесс запуска учебного кластера <a href="https://weirdvic.github.io/mycelium/kubernetes/">Kubernetes</a> в виде <a href="https://weirdvic.github.io/mycelium/minikube/">Minikube</a> на сервере под управлением  <a href="https://weirdvic.github.io/mycelium/oracle-linux/">Oracle Linux</a>.</p>
+<p>Подразумевается что сам сервер с доступом по ssh у нас уже есть. Я использую бесплатный инстанс в <a href="https://cloud.oracle.com">Oracle Cloud</a>, но в принципе можно использовать любое другое облако или даже любой другой хостинг, вплоть до подкроватного. Для запуска Minikube <a href="https://minikube.sigs.k8s.io/docs/start/#what-youll-need">необходимо минимум</a> 2 ядра процессора и 2 Гб оперативной памяти.
+Если мы используем free-tier облака от Oracle, то следует использовать машины на Ampere A1. Бесплатных лимитов хватает либо на то чтобы создать 2 машины с двумя ядрами, либо одну с четырьмя.</p>
+<p>Я использую свою виртуальную машину для изучения Oracle Linux и <a href="https://weirdvic.github.io/mycelium/podman/">Podman</a>. Также нам понадобятся установленные на хосте cURL и <a href="https://weirdvic.github.io/mycelium/nginx/">Nginx</a>. Для генерации пароля нам понадобится утилита <code>htpasswd</code>, в Oracle Linux она входит в пакет с названием <code>httpd-tools</code>. Я буду делать доступ с привязкой домена, для наших целей подойдёт любой домен, вплоть до бесплатных от <a href="https://www.freenom.com">Freenom</a>. Для большей безопасности и других бонусов я использую прокси от <a href="https://weirdvic.github.io/mycelium/cloudflare/">Cloudflare</a>. Обо всём этом подробнее дальше.</p>
+<h2 id="устанавливаем-minikube">Устанавливаем Minikube</h2>
+<p>Сама по себе установка Minikube довольно простая и описана в <a href="https://minikube.sigs.k8s.io/docs/start/">документации</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-arm64
+</span></span><span style="display:flex;"><span>sudo install minikube-linux-arm64 /usr/local/bin/minikube
+</span></span></code></pre></div><p>После этого необходимо создать кластер. Мы используем Podman, это явно нужно указать при создании:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>minikube start --driver<span style="color:#f92672">=</span>podman
+</span></span></code></pre></div><p>После окончания создания кластера, им уже можно пользоваться на удалённой машине, для проверки работоспособности предлагается выполнить команду:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>minikube kubectl -- get pods -A
+</span></span></code></pre></div><p>Если всё хорошо, можем двигаться дальше.</p>
+<h2 id="планируем-удалённый-доступ">Планируем удалённый доступ</h2>
+<p>Кластер доступен на самом сервере, а мы хотим работать с ним с нашей локальной машины, как поступить в данном случае? По-умолчанию API-сервер Minikube принимает только локальные соединения, а значит нам понадобится настроить Nginx в качестве <a href="https://weirdvic.github.io/mycelium/%D1%80%D0%B5%D0%B2%D0%B5%D1%80%D1%81-%D0%BF%D1%80%D0%BE%D0%BA%D1%81%D0%B8/">реверс-прокси</a>, который будет принимать авторизованные запросы на внешний IP нашего сервера и проксировать их на внутренний адрес API Kubernetes.</p>
+<p>Иными словами, я хочу достигнуть следующей схемы:</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<figure><img src="https://weirdvic.github.io/ox-hugo/minikube-access-diagram.svg"
+         alt="Figure 1: Схема доступа к Minikube на сервере."/><figcaption>
+            <p><!-- raw HTML omitted -->Figure 1: <!-- raw HTML omitted -->Схема доступа к Minikube на сервере.</p>
+        </figcaption>
+</figure>
+
+<p>Мы будем отправлять команды при помощи локального kubectl, запросы к API будут уходить на специальный домен или поддомен за <a href="https://weirdvic.github.io/mycelium/cloudflare/">Cloudflare</a>, оттуда проксироваться на виртуальную машину с запущенным <a href="https://weirdvic.github.io/mycelium/minikube/">Minikube</a>. На самой машине хостовый <a href="https://weirdvic.github.io/mycelium/nginx/">Nginx</a> будет принимать подключения, проверять базовую авторизацию и проксировать доверенные подключения на локальный адрес Minikube.</p>
+<h2 id="настройка-nginx-на-сервере">Настройка Nginx на сервере</h2>
+<p>Начнём с простого — сгенерируем пароль для защиты нашего подключения, в этой команде <code>minikube</code> — имя пользователя для HTTP авторизации:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo htpasswd -c /etc/nginx/.htpasswd minikube
+</span></span></code></pre></div><p>Для примера можем использовать пароль <code>b3VyU3VwZXJTZWNyZXRQYXNzd29yZAo=</code>.</p>
+<p>Разумеется, пароль надо где-нибудь сохранить, он нам ещё понадобится.</p>
+<p>Для того чтобы наш Nginx мог проксировать запросы к Kubernetes API, ему нужны SSL сертификаты и здесь у меня возникла путаница. Поскольку Podman не требует запуска от root-пользователя, Minikube через Podman можно запускать от обычного пользователя. Следовательно, конфиг Minikube будет храниться в домашней директории обычного пользователя(в моих примерах стандартное имя пользователя <code>opc</code>) и файлы из него не будут доступны другим пользователям(например <code>nginx</code>). Самым простым решением будет скопировать файлы ключа и сертификата в директорию Nginx.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo mkdir -p /etc/nginx/certs
+</span></span><span style="display:flex;"><span>sudo cp /home/opc/.minikube/profiles/minikube/client.key /etc/nginx/certs/minikube-client.key
+</span></span><span style="display:flex;"><span>sudo cp /home/opc/.minikube/profiles/minikube/client.key /etc/nginx/certs/minikube-client.key
+</span></span></code></pre></div><p>После этого можем создать конфиг реверс-прокси Nginx. У меня используется SSL сертификаты от Cloudflare, приведу пример той части конфига, которая нас интересует:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#75715e"># В http блоке добавляем такую штуку, это способ создать &#34;глобальную переменную&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># в конфиге Nginx и в дальнейшем использовать её в разных других блоках.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Быстро узнать адрес API Minikube можно командой minikube ip
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">map</span> $host $MINIKUBE_IP {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">default</span> <span style="color:#e6db74">&#34;192.168.49.2&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ниже идёт серверный блок для приёма входящих подключений с авторизацией
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># В примере используется субдомен k.examplehomelab.tk
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Сам субдомен предварительно нужно создать в Cloudflare, а также скачать
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># сертификат и ключ для главного домена. Настройка SSL для Cloudflare это
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># не очень сложная, хоть и обширная тема, материалов по которой много.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># https://developers.cloudflare.com/ssl/get-started/
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">server</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">listen</span>       <span style="color:#ae81ff">443</span> <span style="color:#e6db74">ssl</span> <span style="color:#e6db74">http2</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Используем имя субдомена
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">server_name</span>  <span style="color:#e6db74">k.examplehomelab.tk</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Используем сертификат основного домена, благо Cloudflare даёт
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e"># wildcard сертификат типа *.examplehomelab.tk
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">ssl_certificate</span> <span style="color:#e6db74">&#34;/etc/nginx/ssl/examplehomelab.tk.pem&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ssl_certificate_key</span> <span style="color:#e6db74">&#34;/etc/nginx/ssl/examplehomelab.tk.key&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ssl_session_cache</span> <span style="color:#e6db74">shared:SSL:1m</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ssl_session_timeout</span>  <span style="color:#ae81ff">10m</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ssl_ciphers</span> <span style="color:#e6db74">PROFILE=SYSTEM</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ssl_prefer_server_ciphers</span> <span style="color:#66d9ef">on</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">auth_basic</span> <span style="color:#e6db74">&#34;Administrator’s</span> <span style="color:#e6db74">Area&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Путь к нашему файлу для проверки авторизации
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">auth_basic_user_file</span> <span style="color:#e6db74">/etc/nginx/.htpasswd</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Собственно настройка проксирования запросов к API
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">proxy_http_version</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">.1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">https://</span>$MINIKUBE_IP:8443;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $host;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Real-IP</span> $remote_addr;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-For</span> $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Upgrade</span> $http_upgrade;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Connection</span> <span style="color:#e6db74">&#34;upgrade&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># А здесь сертификат для общения с API Minikube по HTTPS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">proxy_ssl_certificate</span> <span style="color:#e6db74">/etc/nginx/certs/minikube-client.crt</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">proxy_ssl_certificate_key</span> <span style="color:#e6db74">/etc/nginx/certs/minikube-client.key</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Конечно, конфиг не идеален, но для моего сценария использования вполне подходит. Выполняем стандартные манипуляции чтобы обновить конфиг:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo nginx -t
+</span></span><span style="display:flex;"><span>sudo service nginx reload
+</span></span></code></pre></div><p>На этом этапе уже можно попробовать открыть наш адрес в браузере, если всё настроено корректно, браузер запросит авторизацию, а после ввода логина(<code>minikube</code>) и пароля(<code>b3VyU3VwZXJTZWNyZXRQYXNzd29yZAo=</code>) мы увидим список доступных путей Kubernetes API. Можем двигаться дальше, к настройке локального kubectl.</p>
+<h2 id="настройка-kubectl">Настройка kubectl</h2>
+<p>Настал момент настроить подключение к кластеру с нашей локальной машины. По-умолчанию на сервере конфигурация Minikube хранится в файле <code>~/.kube/config</code>. Скопируем этот файл к себе на машину по тому же пути, он будет выглядеть примерно так:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">clusters</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">cluster</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">certificate-authority</span>: <span style="color:#ae81ff">/home/opc/.minikube/ca.crt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">extensions</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">extension</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">last-update</span>: <span style="color:#ae81ff">Tue, 30 May 2023 13:39:51 GMT</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">provider</span>: <span style="color:#ae81ff">minikube.sigs.k8s.io</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">version</span>: <span style="color:#ae81ff">v1.30.1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">cluster_info</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">server</span>: <span style="color:#ae81ff">https://192.168.49.2:8443</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">minikube</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">contexts</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">context</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">cluster</span>: <span style="color:#ae81ff">minikube</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">extensions</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">extension</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">last-update</span>: <span style="color:#ae81ff">Tue, 30 May 2023 13:39:51 GMT</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">provider</span>: <span style="color:#ae81ff">minikube.sigs.k8s.io</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">version</span>: <span style="color:#ae81ff">v1.30.1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">context_info</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">namespace</span>: <span style="color:#ae81ff">default</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">user</span>: <span style="color:#ae81ff">minikube</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">minikube</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">current-context</span>: <span style="color:#ae81ff">minikube</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Config</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">preferences</span>: {}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">users</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">name</span>: <span style="color:#ae81ff">minikube</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">user</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client-certificate</span>: <span style="color:#ae81ff">/home/opc/.minikube/profiles/minikube/client.crt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">client-key</span>: <span style="color:#ae81ff">/home/opc/.minikube/profiles/minikube/client.key</span>
+</span></span></code></pre></div><p>Нужно поправить пару мест.</p>
+<ol>
+<li>Заменяем <code>server: https://192.168.49.2:8443</code> на наш внешний адрес сервера.</li>
+<li>В конце файла закомментировать или удалить строчки <code>client-certificate</code> и <code>client-key</code>, а вместо них добавить <code>username</code> со значением <code>minikube</code> и <code>password</code> со значением нашего пароля для HTTP авторизации.</li>
+</ol>
+<p>Сохраняем файл и проверяем работоспособность:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl get all -A
+</span></span></code></pre></div><p>Для дополнительной безопасности ещё можно использовать правила Cloudflare чтобы ограничить доступ к API по стране или IP адресу если он у вас статический.</p>
+<p>На этом всё, в дальнейшем можно работать с кластером так же как и с запущенным локально Minikube.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+
+
+
+
+
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://weirdvic.github.io/tags/kubernetes/">kubernetes</a></span>
+        <span class="tag"><a href="https://weirdvic.github.io/tags/podman/">podman</a></span>
+        <span class="tag"><a href="https://weirdvic.github.io/tags/nginx/">nginx</a></span>
+        <span class="tag"><a href="https://weirdvic.github.io/tags/minikube/">minikube</a></span>
+        
+    </p>
+
+      
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        957 слов
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2023-05-30
+        
+
+         
+          
+            
+              (Последнее обновление: 2023-07-21)
+            
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://weirdvic.github.io/posts/%D0%BA%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9-%D0%B4%D1%80%D0%B0%D0%BA%D0%BE%D0%BD/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Красный дракон</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://weirdvic.github.io/posts/%D0%BC%D0%B8%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%B2-org-roam/">
+                    <span class="button__text">Миграция в org-roam</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            
+            
+            
+            <span>Made with <a href="https://emacs.sexy">&#8496;macs</a> и <a href="http://gohugo.io">Hugo</a></span>
+            <span><a href="https://weirdvic.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://weirdvic.github.io/bundle.min.205d491810c28f95aa953fae884e1c27abe13fdf93ec63b882d0036b248d4a6282eb2d134e4e7225c6ad6e86db87b08488a361ca4a7383d01fcff43f3d57b9c3.js" integrity="sha512-IF1JGBDCj5WqlT&#43;uiE4cJ6vhP9&#43;T7GO4gtADaySNSmKC6y0TTk5yJcatbobbh7CEiKNhykpzg9Afz/Q/PVe5ww=="></script>
+
+
+
+    </body>
+</html>

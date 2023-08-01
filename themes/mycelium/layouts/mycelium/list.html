@@ -1,0 +1,75 @@
+{{ define "main" }}
+    <main class="cards">
+      <h1>{{ if in .RelPermalink "posts/" }}
+            {{ i18n "posts" }}
+          {{ else if in .RelPermalink "tags/" }}
+            {{ i18n "tags" }}
+          {{ else if in .RelPermalink "mycelium/" }}
+            {{ i18n "mycelium" }}
+          {{ end }}
+      </h1>
+      {{ if .Content }}
+      <div class="content">{{ .Content }}</div>
+      {{ end }}
+      <div id="main-graph">
+        <svg id="note-graph" class="note-graph">
+          <defs>
+            <filter x="0" y="0" width="1" height="1" id="solid">
+              <feflood flood-color="#f7f7f7" flood-opacity=".9"></feflood>
+              <fecomposite in="SourceGraphic" operator="xor"></fecomposite>
+            </filter>
+          </defs>
+          <rect id="base_rect" width="100%" height="100%" class="note-graph-rect"></rect></svg>
+      </div>
+
+      <div class="search-container">
+        <h3 id="search_bar"><label>Поиск заметок работает только по целым словам</label></h3>
+        <div>
+          <label><input class="search-input" list="note-names" type="text" id="search_input" onkeyup="search_function()" placeholder="Введите текст здесь…"> <datalist id="note-names">
+              {{ range .Pages }}
+              <option value={{ .Title }}>
+              </option>
+              {{ end }}
+            </datalist><select id="sort_type" class="search-select" name="sort_type">
+              <option value="top">
+                Больше связей
+              </option>
+              <option value="name">
+                По алфавиту
+              </option>
+              <option value="latest">
+                Самые новые
+              </option>
+          </select></label>
+        </div>
+      </div>
+      <div class="cards-group">
+        <ul class="cards-list" id="note_list">
+          {{ range .Pages }}
+          {{ $formattedTitle := replaceRE "[ _]" "_" (lower .Title) }}
+          <li id="{{ $formattedTitle }}" class="card-item">
+            <a href="{{.Permalink}}" class="card-item-inner" title="{{ .Title }}">
+              <div class="card-title">{{.Title}}</div>
+              <div>
+              <div class="card-tags">{{ partial "card_tags.html" .Params.tags }}</div>
+              <div class="card-date">{{ .Date.Format "2006-01-02"}}</div>
+              </div>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </main>
+    <script type="module">
+      import { search, default as init } from '/wasm_output/tinysearch_engine.js';
+      window.search = search;
+      async function run() {
+          await init('/wasm_output/tinysearch_engine_bg.wasm');
+      }
+      run();
+    </script>
+    <script defer src="/js/sort.js"></script>
+    <script defer src="/js/search.js"></script>
+    <script defer src="https://d3js.org/d3.v7.min.js"></script>
+    <script defer src="/js/graph.js"></script>
+{{ end }}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PostgreSQL on Цифровой мицелий</title>
+    <link>https://weirdvic.github.io/tags/postgresql/</link>
+    <description>Recent content in PostgreSQL on Цифровой мицелий</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 31 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://weirdvic.github.io/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10 самых больших таблиц в базе</title>
+      <link>https://weirdvic.github.io/mycelium/10-%D1%81%D0%B0%D0%BC%D1%8B%D1%85-%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D1%85-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5/</link>
+      <pubDate>Mon, 31 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/10-%D1%81%D0%B0%D0%BC%D1%8B%D1%85-%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D1%85-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5/</guid>
+      <description>Запрос позволяет найти 10(или больше) самых больших таблиц PostgreSQL по занимаемому месту на диске:
+SELECT schemaname AS &amp;#34;table_schema&amp;#34;, relname AS &amp;#34;table_name&amp;#34;, pg_size_pretty(pg_total_relation_size(relid)) AS total_size, pg_size_pretty(pg_relation_size(relid)) AS data_size, pg_size_pretty(pg_total_relation_size(relid) - pg_relation_size(relid)) AS external_size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC, pg_relation_size(relid) DESC LIMIT 10; </description>
+    </item>
+    
+    <item>
+      <title>Изменить разрешения на уровне схемы Изменить разрешения на уровне схемы</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D1%81%D1%85%D0%B5%D0%BC%D1%8B-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D1%81%D1%85%D0%B5%D0%BC%D1%8B/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D1%81%D1%85%D0%B5%D0%BC%D1%8B-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D1%81%D1%85%D0%B5%D0%BC%D1%8B/</guid>
+      <description>GRANT SELECT ON ALL TABLES IN SCHEMA project_1 TO analytic; </description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL</title>
+      <link>https://weirdvic.github.io/mycelium/postgresql/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/postgresql/</guid>
+      <description>Заметки по настройке и обслуживанию СУБД PostgreSQL
+Изменить разрешения на уровне схемы 10 самых больших таблиц в базе </description>
+    </item>
+    
+  </channel>
+</rss>

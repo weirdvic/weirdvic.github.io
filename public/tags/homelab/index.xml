@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homelab on Цифровой мицелий</title>
+    <link>https://weirdvic.github.io/tags/homelab/</link>
+    <description>Recent content in Homelab on Цифровой мицелий</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 15 May 2023 00:00:00 +0300</lastBuildDate><atom:link href="https://weirdvic.github.io/tags/homelab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Uptime Kuma</title>
+      <link>https://weirdvic.github.io/mycelium/uptime-kuma/</link>
+      <pubDate>Mon, 15 May 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/uptime-kuma/</guid>
+      <description>Uptime Kuma — selfhosted сервис для мониторинга статуса сервисов.
+Запуск в podman:
+podman volume create uptime-kuma podman run --detach --restart=always -p 127.0.0.1:3001:3001 -v uptime-kuma:/app/data --name uptime-kuma docker.io/louislam/uptime-kuma:1 [2023-05-15 Пн] Запустил внутри podman на сервере xorn в Oracle Cloud. Для доступа снаружи привязал домен trapperkobold.tk в Cloudflare. Для Uptime Kuma зарегистрировал отдельный субдомен uk.trapperkobold.tk и настроил реверс-прокси Nginx. По-умолчанию Nginx в Oracle Linux из-за настроек SELinux не умеет цепляться к локальным портам, это можно исправить командой:</description>
+    </item>
+    
+  </channel>
+</rss>

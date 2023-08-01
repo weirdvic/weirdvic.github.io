@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>snippets on Цифровой мицелий</title>
+    <link>https://weirdvic.github.io/tags/snippets/</link>
+    <description>Recent content in snippets on Цифровой мицелий</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 31 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://weirdvic.github.io/tags/snippets/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10 самых больших таблиц в базе</title>
+      <link>https://weirdvic.github.io/mycelium/10-%D1%81%D0%B0%D0%BC%D1%8B%D1%85-%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D1%85-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5/</link>
+      <pubDate>Mon, 31 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/10-%D1%81%D0%B0%D0%BC%D1%8B%D1%85-%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B8%D1%85-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D0%B2-%D0%B1%D0%B0%D0%B7%D0%B5/</guid>
+      <description>Запрос позволяет найти 10(или больше) самых больших таблиц PostgreSQL по занимаемому месту на диске:
+SELECT schemaname AS &amp;#34;table_schema&amp;#34;, relname AS &amp;#34;table_name&amp;#34;, pg_size_pretty(pg_total_relation_size(relid)) AS total_size, pg_size_pretty(pg_relation_size(relid)) AS data_size, pg_size_pretty(pg_total_relation_size(relid) - pg_relation_size(relid)) AS external_size FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC, pg_relation_size(relid) DESC LIMIT 10; </description>
+    </item>
+    
+    <item>
+      <title>Поиск медианы в MySQL</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D0%BD%D1%8B-%D0%B2-mysql/</link>
+      <pubDate>Sat, 29 Jul 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%BC%D0%B5%D0%B4%D0%B8%D0%B0%D0%BD%D1%8B-%D0%B2-mysql/</guid>
+      <description>Иногда требуется найти медианное значение в таблице. В отличие от среднего, медиана это значение, разделяющее диапазон на две равные части. В случае равномерного распределения, медиана совпадает со средним арифметическим, но в других случаях может и отличаться. Если диапазон содержит чётное количество значений, медианное приходится на среднее между двумя центральными значениями.
+Рассмотрим пример поиска медианного значения северной широты (LAT_N) из таблицы метеостанций.
+SET @row_index := -1; SELECT ROUND(AVG(subq.LAT_N),4) FROM ( SELECT @row_index:=@row_index + 1 AS row_index, LAT_N FROM STATION ORDER BY LAT_N ) AS subq WHERE subq.</description>
+    </item>
+    
+    <item>
+      <title>Ошибка suspiciously many broken parts to remove</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0-suspiciously-many-broken-parts-to-remove/</link>
+      <pubDate>Wed, 26 Jul 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B0-suspiciously-many-broken-parts-to-remove/</guid>
+      <description>При запуске сервера Clickhouse после аварийной перезагрузки или проблем с файловой системой может появиться большое число ошибок и сервер просто не запустится. В логах Clickhouse ошибки будут примерно такие:
+2023.07.26 19:26:36.621640 [ 2366 ] {} &amp;lt;Error&amp;gt; Application: DB::Exception: Suspiciously many (29) broken parts to remove.: Cannot attach table anyclass.event from metadata file /var/lib/clickhouse/store/430/430da485-c4de-4665-830d-a485c4de4665/event.sql from query ATTACH TABLE … clickhouse from path /var/lib/clickhouse/metadata/clickhouse В таком случае может помочь создание файла /var/lib/clickhouse/flags/force_restore_data и перезапуск сервера:</description>
+    </item>
+    
+    <item>
+      <title>Запрет доступа по IP адресу</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%B7%D0%B0%D0%BF%D1%80%D0%B5%D1%82-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0-%D0%BF%D0%BE-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D1%83/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%B7%D0%B0%D0%BF%D1%80%D0%B5%D1%82-%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%B0-%D0%BF%D0%BE-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D1%83/</guid>
+      <description>Даже в случае если сайт хостится за прокси типа Cloudflare, полезно ограничить прямой доступ по IP адресу сервера. В Nginx версии 1.19.4 и новее можно использовать такой конфиг:
+server { listen 80 default_server; listen [::]:80 default_server; listen 443 default_server; listen [::]:443 default_server; ssl_reject_handshake on; server_name _; return 444; } В более старых версиях для достижения такого же результата придётся сначала сгенерировать самоподписной SSL сертификат:
+sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout default.</description>
+    </item>
+    
+    <item>
+      <title>Изменить разрешения на уровне схемы Изменить разрешения на уровне схемы</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D1%81%D1%85%D0%B5%D0%BC%D1%8B-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D1%81%D1%85%D0%B5%D0%BC%D1%8B/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D1%81%D1%85%D0%B5%D0%BC%D1%8B-%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B8%D1%82%D1%8C-%D1%80%D0%B0%D0%B7%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D0%B5-%D1%81%D1%85%D0%B5%D0%BC%D1%8B/</guid>
+      <description>GRANT SELECT ON ALL TABLES IN SCHEMA project_1 TO analytic; </description>
+    </item>
+    
+    <item>
+      <title>Какие таблицы Clickhouse занимают место на диске</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-clickhouse-%D0%B7%D0%B0%D0%BD%D0%B8%D0%BC%D0%B0%D1%8E%D1%82-%D0%BC%D0%B5%D1%81%D1%82%D0%BE-%D0%BD%D0%B0-%D0%B4%D0%B8%D1%81%D0%BA%D0%B5/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BA%D0%B0%D0%BA%D0%B8%D0%B5-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D1%8B-clickhouse-%D0%B7%D0%B0%D0%BD%D0%B8%D0%BC%D0%B0%D1%8E%D1%82-%D0%BC%D0%B5%D1%81%D1%82%D0%BE-%D0%BD%D0%B0-%D0%B4%D0%B8%D1%81%D0%BA%D0%B5/</guid>
+      <description>SELECT &amp;#34;table&amp;#34;, formatReadableSize(sum(bytes)) AS &amp;#34;size&amp;#34; FROM system.parts WHERE active GROUP BY &amp;#34;table&amp;#34; ORDER BY &amp;#34;size&amp;#34; DESC ; </description>
+    </item>
+    
+    <item>
+      <title>Отключение логирования запросов Clickhouse</title>
+      <link>https://weirdvic.github.io/mycelium/%D0%BE%D1%82%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BB%D0%BE%D0%B3%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-clickhouse/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D0%BE%D1%82%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BB%D0%BE%D0%B3%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81%D0%BE%D0%B2-clickhouse/</guid>
+      <description>В файле /etc/clickhouse-server/users.d/disable-query-logging.xml:
+&amp;lt;yandex&amp;gt; &amp;lt;profiles&amp;gt; &amp;lt;default&amp;gt; &amp;lt;log_queries&amp;gt;0&amp;lt;/log_queries&amp;gt; &amp;lt;log_query_threads&amp;gt;0&amp;lt;/log_query_threads&amp;gt; &amp;lt;/default&amp;gt; &amp;lt;/profiles&amp;gt; &amp;lt;/yandex&amp;gt; В новых версиях Clickhouse вместо &amp;lt;yandex&amp;gt; использовать &amp;lt;clickhouse&amp;gt;.</description>
+    </item>
+    
+    <item>
+      <title>Удаление www из URL</title>
+      <link>https://weirdvic.github.io/mycelium/%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-www-%D0%B8%D0%B7-url/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D1%83%D0%B4%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-www-%D0%B8%D0%B7-url/</guid>
+      <description>Иногда требуется автоматически перенаправлять запросы с www-доменов на домен без www. В Nginx это можно сделать следующим образом:
+server { server_name ~^(www\.)(?&amp;lt;domain&amp;gt;.+)$; return 301 $scheme://$domain$request_uri; } Важно отметить что этот способ будет хорошо работать только для HTTP запросов. В случае с HTTPS придётся добавлять версию домена с www в сертификат сайта.</description>
+    </item>
+    
+    <item>
+      <title>Уменьшение уровня логирования Clickhouse</title>
+      <link>https://weirdvic.github.io/mycelium/%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D1%8F-%D0%BB%D0%BE%D0%B3%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-clickhouse/</link>
+      <pubDate>Fri, 21 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D1%8F-%D0%BB%D0%BE%D0%B3%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-clickhouse/</guid>
+      <description>В файле /etc/clickhouse-server/config.d/set-log-level.xml:
+&amp;lt;yandex&amp;gt; &amp;lt;logger&amp;gt; &amp;lt;level&amp;gt;warning&amp;lt;/level&amp;gt; &amp;lt;console&amp;gt;true&amp;lt;/console&amp;gt; &amp;lt;/logger&amp;gt; &amp;lt;query_thread_log remove=&amp;#34;remove&amp;#34;/&amp;gt; &amp;lt;query_log remove=&amp;#34;remove&amp;#34;/&amp;gt; &amp;lt;text_log remove=&amp;#34;remove&amp;#34;/&amp;gt; &amp;lt;trace_log remove=&amp;#34;remove&amp;#34;/&amp;gt; &amp;lt;metric_log remove=&amp;#34;remove&amp;#34;/&amp;gt; &amp;lt;asynchronous_metric_log remove=&amp;#34;remove&amp;#34;/&amp;gt; &amp;lt;/yandex&amp;gt; В новых версиях Clickhouse вместо &amp;lt;yandex&amp;gt; использовать &amp;lt;clickhouse&amp;gt;. Также можно отключить дополнительные логи:
+&amp;lt;session_log remove=&amp;#34;remove&amp;#34;/&amp;gt; &amp;lt;part_log remove=&amp;#34;remove&amp;#34;/&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL</title>
+      <link>https://weirdvic.github.io/mycelium/postgresql/</link>
+      <pubDate>Wed, 21 Jun 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/postgresql/</guid>
+      <description>Заметки по настройке и обслуживанию СУБД PostgreSQL
+Изменить разрешения на уровне схемы 10 самых больших таблиц в базе </description>
+    </item>
+    
+  </channel>
+</rss>

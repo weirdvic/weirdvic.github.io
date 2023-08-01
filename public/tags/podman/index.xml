@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Podman on Цифровой мицелий</title>
+    <link>https://weirdvic.github.io/tags/podman/</link>
+    <description>Recent content in Podman on Цифровой мицелий</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru-ru</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 30 May 2023 00:00:00 +0300</lastBuildDate><atom:link href="https://weirdvic.github.io/tags/podman/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Установка Minikube в Oracle Linux</title>
+      <link>https://weirdvic.github.io/posts/%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-minikube-%D0%B2-oracle-linux/</link>
+      <pubDate>Tue, 30 May 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/posts/%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-minikube-%D0%B2-oracle-linux/</guid>
+      <description>Введение В этой статье я бы хотел зафиксировать процесс запуска учебного кластера Kubernetes в виде Minikube на сервере под управлением Oracle Linux.
+Подразумевается что сам сервер с доступом по ssh у нас уже есть. Я использую бесплатный инстанс в Oracle Cloud, но в принципе можно использовать любое другое облако или даже любой другой хостинг, вплоть до подкроватного. Для запуска Minikube необходимо минимум 2 ядра процессора и 2 Гб оперативной памяти. Если мы используем free-tier облака от Oracle, то следует использовать машины на Ampere A1.</description>
+    </item>
+    
+    <item>
+      <title>Podman</title>
+      <link>https://weirdvic.github.io/mycelium/podman/</link>
+      <pubDate>Mon, 15 May 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/podman/</guid>
+      <description>Podman — утилита для управления контейнерами, альтернатива Docker.
+После установки на Oracle Linux для скачивания контейнеров с DockerHub необходимо залогиниться:
+podman login docker.io По-умолчанию в rootless режиме Podman не умеет цепляться к портам ниже 1024, документация по этому поводу предлагает несколько вариантов решения этой проблемы кроме запуска Podman от рута:
+В sysctl установить значение net.ipv4.ip_unprivileged_port_start равное минимальному порту, который требуется открывать от непривиллегированного пользователя. То есть если нужно прослушивать 80 порт, это значение должно быть не больше 80.</description>
+    </item>
+    
+    <item>
+      <title>Uptime Kuma</title>
+      <link>https://weirdvic.github.io/mycelium/uptime-kuma/</link>
+      <pubDate>Mon, 15 May 2023 00:00:00 +0300</pubDate>
+      
+      <guid>https://weirdvic.github.io/mycelium/uptime-kuma/</guid>
+      <description>Uptime Kuma — selfhosted сервис для мониторинга статуса сервисов.
+Запуск в podman:
+podman volume create uptime-kuma podman run --detach --restart=always -p 127.0.0.1:3001:3001 -v uptime-kuma:/app/data --name uptime-kuma docker.io/louislam/uptime-kuma:1 [2023-05-15 Пн] Запустил внутри podman на сервере xorn в Oracle Cloud. Для доступа снаружи привязал домен trapperkobold.tk в Cloudflare. Для Uptime Kuma зарегистрировал отдельный субдомен uk.trapperkobold.tk и настроил реверс-прокси Nginx. По-умолчанию Nginx в Oracle Linux из-за настроек SELinux не умеет цепляться к локальным портам, это можно исправить командой:</description>
+    </item>
+    
+  </channel>
+</rss>
