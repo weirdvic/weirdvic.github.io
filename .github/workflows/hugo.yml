@@ -62,6 +62,14 @@ jobs:
         with:
           path: ./public
 
+      - name: Build tinysearch
+        uses: leonhfr/tinysearch-action@v1
+        with:
+          index: public/index.json
+          output_dir: public/js
+          output_types: |
+            wasm
+
   # Deployment job
   deploy:
     environment:
