@@ -70,6 +70,9 @@ jobs:
           output_types: |
             wasm
             js
+      - name: List emitted files
+        run: |
+          echo ${{ steps.tinysearch.outputs.files }}
 
   # Deployment job
   deploy:
