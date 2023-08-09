@@ -6,4 +6,4 @@ tags = ["GCP", "Cloud"]
 draft = false
 +++
 
-Google Cloud Platform (GCP) — облачная платформа от Google, наряду с AWS и [Azure]({{< relref "20230801144525-azure.md" >}}) входит в тройку крупнейших.
+Google Cloud Platform (GCP) — облачная платформа от Google, наряду с [AWS]({{< relref "20230801144033-aws.md" >}}) и [Azure]({{< relref "20230801144525-azure.md" >}}) входит в тройку крупнейших.

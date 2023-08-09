@@ -69,6 +69,7 @@ jobs:
           output_dir: public/js
           output_types: |
             wasm
+            js
 
   # Deployment job
   deploy:
