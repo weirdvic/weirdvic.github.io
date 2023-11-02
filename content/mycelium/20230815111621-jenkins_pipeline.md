@@ -1,7 +1,7 @@
 +++
 title = "Jenkins Pipeline"
 date = 2023-08-15T00:00:00+03:00
-lastmod = 2023-08-15
+lastmod = 2023-11-01
 tags = ["Jenkins"]
 draft = false
 +++

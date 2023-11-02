@@ -1,7 +1,7 @@
 +++
 title = "Настройка локального container registry"
 date = 2023-08-15T00:00:00+03:00
-lastmod = 2023-08-15
+lastmod = 2023-11-01
 tags = ["Docker", "Kubernetes"]
 draft = false
 +++
@@ -100,7 +100,7 @@ minikube ssh "echo \"${DEV_IP}      registry.devops-tools.svc.cluster.local\" | 
 
 ### Создание сервиса Kubernetes {#создание-сервиса-kubernetes}
 
-Теперь нам нужно создать сервис внутри кластера и эндпоинт Kubernetes, указывающий на адрес нашего хоста. У меня [Jenkins]({{< relref "20230815111621-jenkins_pipeline.md" >}}) запущен внутри неймспейса `devops-tools`, как запустить Jenkins в кластере Minikube рассказано [здесь]({{< relref "20230809090530-установка_jenkins.md" >}}).
+Теперь нам нужно создать сервис внутри кластера и эндпоинт Kubernetes, указывающий на адрес нашего хоста. У меня [Jenkins]({{< relref "20230809085954-jenkins.md" >}}) запущен внутри неймспейса `devops-tools`, как запустить Jenkins в кластере Minikube рассказано [здесь]({{< relref "20230809090530-установка_jenkins.md" >}}).
 
 ```yaml
 ---
