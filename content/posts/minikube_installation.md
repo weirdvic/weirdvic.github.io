@@ -1,7 +1,7 @@
 +++
 title = "Установка Minikube в Oracle Linux"
 date = 2023-05-30T00:00:00+03:00
-lastmod = 2023-07-21
+lastmod = 2023-12-27
 tags = ["kubernetes", "podman", "nginx", "minikube"]
 draft = false
 +++
@@ -170,10 +170,11 @@ users:
     client-key: /home/opc/.minikube/profiles/minikube/client.key
 ```
 
-Нужно поправить пару мест.
+Нужно поправить несколько мест.
 
-1.  Заменяем `server: https://192.168.49.2:8443` на наш внешний адрес сервера.
-2.  В конце файла закомментировать или удалить строчки `client-certificate` и `client-key`, а вместо них добавить `username` со значением `minikube` и `password` со значением нашего пароля для HTTP авторизации.
+1.  Закомментировать строку `certificate-authority: /home/opc/.minikube/ca.crt`
+2.  Заменить `server: https://192.168.49.2:8443` на наш внешний адрес сервера как в конфиге Nginx, в нашем примере `k.examplehomelab.tk`.
+3.  В конце файла закомментировать или удалить строчки `client-certificate` и `client-key`, а вместо них добавить `username` со значением `minikube` и `password` со значением нашего пароля для HTTP авторизации.
 
 Сохраняем файл и проверяем работоспособность:
 
